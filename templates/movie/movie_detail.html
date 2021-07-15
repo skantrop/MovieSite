@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+<div class="vid-set">
+<h1>{{ movie.title }}</h1></div>
+
+<video class="embed-responsive-16by9"  id="video-style" controls="controls" style="width: 800px; height: 500px;">
+    <source src="{{ movie.video.url }}" type="video/mp4" />
+
+    <h1>{{ movie.video.url }}</h1>
+</video>
+
+<div class="vid-set"><p>{{ movie.description }}</p></div>
+
+
+<br/>
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+{% endblock %}

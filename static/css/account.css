@@ -1,0 +1,72 @@
+* {
+	margin:0;
+	padding:0;
+	outline:0;
+	background:url('img/login.jpg');
+
+}
+body {
+	font-size:12px;
+	line-height:1.3;
+	font-family:Arial, Helvetica, Sans-Serif;
+	color:#ccc;
+}
+
+
+
+body {
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url("https://i.imgur.com/Lljil7X.jpeg") 50% fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 320px;
+  height: 390px;
+  padding: 20px;
+  background: darkblue;
+  opacity: 80%;
+  border-radius: 50px;
+}
+
+button{
+    color: white;
+    font-family: fantasy;
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 10px 60px;
+    height: 30px;
+    width: 125px;
+
+}
+
+
+label.control-label {
+    color: white;
+    font-family: fantasy;
+    font-size: x-large;
+}
+
+input#id_password {
+    height: 20px;
+    width: 250px;
+    border: 2px solid;
+    border-radius: 20px;
+}
+
+
+input#id_username {
+    height: 20px;
+    width: 250px;
+    border: 2px solid;
+    border-radius: 20px;
+}

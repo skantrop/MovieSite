@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">{{ form|bootstrap }}</div>
+        <button type="submit">Create</button>
+    </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+
+
