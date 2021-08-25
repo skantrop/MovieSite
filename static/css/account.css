@@ -2746,3 +2746,24 @@ p {
   letter-spacing: .04em;
   text-transform: uppercase;
 }
+
+
+input#id_title, textarea#id_description, select#id_genre, input#id_rel_date, input#id_video{
+    color: black;
+    border: grey solid 1px;
+    width: 800px;
+}
+
+div#edit-movie-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+}
+
+form#edit-movie-form{
+    width: 800px;
+    color: black;
+    margin: 50px;
+}

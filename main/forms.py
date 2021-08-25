@@ -28,7 +28,7 @@ class CreateMovieForm(forms.ModelForm):
 class UpdateMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        fields = ('author', 'id', 'like', 'dislike')
+        exclude = ('author', 'id', 'like', 'dislike')
 
 
 class CommentForm(forms.ModelForm):

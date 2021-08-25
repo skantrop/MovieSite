@@ -10,7 +10,7 @@
         <div class="s-hero__slider">
 
 
-            {% for movie in movies %}
+            {% for movie in movies%}
             <div class="s-hero__slide">
                 <div class="s-hero__slide-bg" style="background-image: url('{{ movie.image.url }}');"></div>
 
@@ -67,7 +67,7 @@
 
                     <div class="grid-sizer">
 
-                    {% for movie in movies %}
+                    {% for movie in page_obj %}
                         <article class="brick entry" data-aos="fade-up">
 
                         <div class="entry__thumb">
@@ -107,31 +107,23 @@
 
             </div> <!-- end masonry -->
 
-            <div class="row">
-                <div class="column large-12">
-                    <nav class="pgn">
-                        <ul>
-                            <li>
-                                <span class="pgn__prev" href="#0">
-                                    Prev
-                                </span>
-                            </li>
-                            <li><a class="pgn__num" href="#0">1</a></li>
-                            <li><span class="pgn__num current">2</span></li>
-                            <li><a class="pgn__num" href="#0">3</a></li>
-                            <li><a class="pgn__num" href="#0">4</a></li>
-                            <li><a class="pgn__num" href="#0">5</a></li>
-                            <li><span class="pgn__num dots">…</span></li>
-                            <li><a class="pgn__num" href="#0">8</a></li>
-                            <li>
-                                <span class="pgn__next" href="#0">
-                                    Next
-                                </span>
-                            </li>
-                        </ul>
-                    </nav> <!-- end pgn -->
-                </div> <!-- end column -->
-            </div> <!-- end row -->
+<nav aria-label="..." style="margin-left: 550px">
+  <ul class="pagination pagination-lg">
+      {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="{% url 'home'%}?page={{ page_obj.previous_page_number}}">{{ page_obj.previous_page_number}}</a></li>
+      {% endif %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">{{page_obj.number}}</a>
+    </li>
+      {%if page_obj.has_next%}
+    <li class="page-item"><a class="page-link" href="{% url 'home'%}?page={{ page_obj.next_page_number}}">{{ page_obj.next_page_number}}</a></li>
+      {% endif %}
+  </ul>
+</nav>
+
+
+
+
 
         </div> <!-- end s-bricks -->
 

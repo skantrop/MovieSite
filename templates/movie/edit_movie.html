@@ -1,0 +1,11 @@
+{% extends 'auth_base.html'%}
+{% load static %}
+{% load bootstrap%}
+
+{% block content%}
+<div id="edit-movie-container">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button type="submit">Edit</button>
+{% endblock content %}

@@ -7,19 +7,35 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django_filters import FilterSet
 
-from main.forms import CreateMovieForm, CommentForm
+from main.forms import CreateMovieForm, CommentForm, UpdateMovieForm
 from main.models import *
 
 from django.template import RequestContext
 
 
 
-class IndexPageView(View):
-    def get(self, request):
-        genres = Genre.objects.all()
-        movies = Movie.objects.all()
-        return render(request, 'movie/index.html', locals())
+# class IndexPageView(ListView):
+#     model = Movie
+#     paginate_by = 2
+#     context_object_name = 'movies'
+#
+#     def get(self, request):
+#         movies = super().get_queryset()
+#         genres = Genre.objects.all()
+#         return render(request, 'movie/index.html', locals())
 
+class IndexPageView(ListView):
+    model = Movie
+    template_name = 'movie/index.html'
+    context_object_name = 'movies'
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['genres'] = Genre.objects.all()
+        return context
 
 class MovieFilterSet(FilterSet):
     author = django_filters.CharFilter('author__email', lookup_expr='iecxact')
@@ -76,13 +92,14 @@ class IsAuthorMixin(UserPassesTestMixin):
                self.request.user == post.author
 
 
-# class EditPostView(IsAuthorMixin, UpdateView):
-#     queryset = Movie.objects.all()
-#     template_name = 'main/edit_post.html'
-#     form_class = UpdatePostForm
+class EditMovieView(IsAuthorMixin, UpdateView):
+    queryset = Movie.objects.all()
+    template_name = 'movie/edit_movie.html'
+    form_class = UpdateMovieForm
+    pk_url_kwarg = "pk"
 
-    # def get_success_url(self):
-    #     return reverse('post-details', args=(self.object.id, ))
+    def get_success_url(self):
+        return reverse('detail', args=(self.object.id, ))
 
 
 class DeleteMovieView(IsAuthorMixin, DeleteView):
@@ -104,27 +121,16 @@ class SearchResultsView(View):
         return render(request, 'movie/index.html', {'movies': movies})
 
 
-# class AddToWishList(LoginRequiredMixin, View):
-#     def get(self, request, post_id):
-#         post = get_object_or_404(Post, id=post_id)
-#         WishList.objects.create(post=post, user=request.user)
-#         return redirect('main/index.html')
-
-
 class GenreDetailView(DetailView):
     model = Genre
     template_name = 'movie/movie_list.html'
     context_object_name = 'genre'
 
-    # def get(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     self.id = kwargs.get('id', None)
-    #     return super().get(request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         genre = self.get_object()
         context['movies'] = Movie.objects.filter(genre_id=genre.id).select_related('genre')
+        context['genres'] = Genre.objects.all()
         return context
 
 
@@ -132,3 +138,6 @@ class CommentView(DetailView):
     model = Comment
     template_name = 'movie/movie_detail.html'
     form_class = CommentForm
+
+
+

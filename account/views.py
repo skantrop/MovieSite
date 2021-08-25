@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, TemplateView
 from account.forms import *
+from main.models import Movie
 
 User = get_user_model()
 
@@ -33,7 +34,7 @@ class ActivationView(View):
 
 class SignInView(LoginView):
     template_name = 'account/login.html'
-    success_url = reverse_lazy('home')
+    success_url = 'home'
 
 
 

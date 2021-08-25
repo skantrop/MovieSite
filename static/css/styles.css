@@ -5294,6 +5294,10 @@ input {
     border: none;
 }
 
+.edit-delete-btn {
+    margin: 80px;
+}
+
 .brick {
     height: 650px;
     overflow: hidden;

@@ -18,7 +18,7 @@
     ================================================== -->
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- favicons
     ================================================== -->
@@ -66,10 +66,10 @@
                             <li><a href="single-standard.html">Standard Post</a></li>
                         </ul>
                     </li>
-                    <li><a href="styles.html" title="">Styles</a></li>
                     <li><a href="about.html" title="">About</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}" title="">Profile</a></li>
+                    <li><a href="{%url 'logout' %}" title="">Log Out</a></li>
                     {% endif %}
                     {% if not user.is_authenticated %}
                     <li><a href="{% url 'login'%}" title="">Log In</a></li>
