@@ -1,38 +1,46 @@
 {% extends 'base.html' %}
-{% load static%}
 {% block content %}
+{% load bootstrap %}
 <div class="vid-set">
-<h1>{{ movie.title }}</h1></div>
+    <div class="content-vid">
 
-<video class="embed-responsive-16by9"  id="video-style" controls="controls" style="width: 800px; height: 500px;">
-    <source src="{{ movie.video.url }}" type="video/mp4" />
+        <iframe style="width: 80%; height: 600px; margin: 120px; margin-top: 200px; margin-bottom: 0px;"
+    src="{{ movie.video }}">
+    </iframe>
+    </div>
+    <h3 style="margin-left: 50px; margin-right: 50px;">{{ movie.title}}</h3>
+    <p style="margin-left: 50px; margin-right: 50px">{{ movie.description }}</p>
+ </div>
 
-    <h1>{{ movie.video.url }}</h1>
-</video>
+<div class="comment-section">
+    <h4>Comment section</h4>
+    {% for comment in comments %}
+{% if comment.movie == movie %}
+<div class="comment-container">
+  <p class="user-data">{{ comment.user }} | {{ comment.date }}</p>
+  <p class="comment-data">{{ comment.description }}</p>
 
-<div class="vid-set"><p>{{ movie.description }}</p></div>
+</div>
+    <br>
 
+    {% endif  %}
+{% endfor %}
+</div>
 
-<br/>
-<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
+    <div class="comment-form">
+        <form action="." method="post">
+            {% csrf_token %}
+            <input name="description">
+            <br>
+            <button type="submit">Comment</button>
+            </form>
+    </div>
 
 
+</div>
 
+
+
+<!--<div class="vid-set"></div>-->
 {% endblock %}
+

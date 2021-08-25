@@ -22,9 +22,9 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
     image = models.ImageField(upload_to='images', blank=True, null=True)
-    genre = models.ManyToManyField(Genre, related_name='movies')
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='movies')
     rel_date = models.DateField()
-    video = models.FileField(upload_to='mp4')
+    video = models.CharField(max_length=1000)
     like = models.ManyToManyField(User, default=None, blank=True, related_name='like')
     dislike = models.ManyToManyField(User, default=None, blank=True, related_name='dislike')
 
@@ -43,7 +43,6 @@ class Movie(models.Model):
         return self.dislike.all().count()
 
 
-
 class Comment(models.Model):
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -55,4 +54,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.description
+
 

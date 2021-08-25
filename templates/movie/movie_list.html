@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}{{ genre.title }}{% endblock title%}
+{% block content %}
+        <!-- content
+    ================================================== -->
+    <section class="s-content">
+
+
+        <!-- page header
+        ================================================== -->
+        <div class="s-pageheader">
+            <div class="row">
+                <div class="column large-12">
+                    <h1 class="page-title">
+                        <span class="page-title__small-type">Genre</span>
+                        {{ genre.title }}
+                    </h1>
+                </div>
+            </div>
+        </div> <!-- end s-pageheader-->
+
+
+        <!-- masonry
+        ================================================== -->
+        <div class="s-bricks s-bricks--half-top-padding">
+
+            <div class="masonry">
+                <div class="bricks-wrapper h-group">
+
+                    <div class="grid-sizer"></div>
+
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    {% for movie in movies %}
+                        <article class="brick entry" data-aos="fade-up">
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="thumb-link">
+                                {% if movie.image %}
+                                <img src="{{ movie.image.url }}" alt="{{ movie.title }}">
+                                {% endif %}
+                            </a>
+                        </div> <!-- end entry__thumb -->
+
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h1 class="entry__title"><a href="{% url 'detail' movie.id %}">{{ movie.title }}</a></h1>
+
+                                <div class="entry__meta">
+                                    <span class="byline">
+<!--                                </span>-->
+                                    <span class="cat-links">
+                                        <a href="">{{ movie.genre }}</a>
+                                        <a href="#"></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    {{ movie.description|truncatechars:100 }}
+                                </p>
+                            </div>
+                            <a class="entry__more-link" href="{% url 'detail' movie.id %}">Подробнее</a>
+                        </div> <!-- end entry__text -->
+                    </article> <!-- end article -->
+                    {% endfor %}
+
+                </div> <!-- end brick-wrapper -->
+
+            </div> <!-- end masonry -->
+
+            <div class="row">
+                <div class="column large-12">
+                    <nav class="pgn">
+                        <ul>
+                            <li>
+                                <span class="pgn__prev" href="#0">
+                                    Prev
+                                </span>
+                            </li>
+<!--                            <li><a class="pgn__num" href="#">1</a></li>-->
+                            <li><span class="pgn__num current">2</span></li>
+                            <li><a class="pgn__num" href="#0">3</a></li>
+                            <li><a class="pgn__num" href="#0">4</a></li>
+                            <li><a class="pgn__num" href="#0">5</a></li>
+                            <li><span class="pgn__num dots">…</span></li>
+                            <li><a class="pgn__num" href="#0">8</a></li>
+                            <li>
+                                <span class="pgn__next" href="#0">
+                                    Next
+                                </span>
+                            </li>
+                        </ul>
+                    </nav> <!-- end pgn -->
+                </div> <!-- end column -->
+            </div> <!-- end row -->
+
+        </div> <!-- end s-bricks -->
+
+    </section> <!-- end s-content -->
+{% endblock content %}

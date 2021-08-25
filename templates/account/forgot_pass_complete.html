@@ -1,0 +1,8 @@
+{% extends 'auth_base.html' %}
+{% block content %}
+    <p>Вам на почту был выслан новый пароль. </p>
+    <p>
+        <a href="{% url 'login' %}">Войти на сайт</a> или
+    <a href="{% url 'home' %}">Вернуться на главную</a>
+    </p>
+{% endblock %}

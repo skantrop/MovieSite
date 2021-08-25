@@ -3,3 +3,9 @@ psycopg2-binary==2.8.5
 Pillow==7.1
 transliterate==1.10.2
 django-bootstrap-form
+django-filter
+celery
+redis
+django-debug-toolbar
+python-decouple
+
