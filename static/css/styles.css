@@ -3279,9 +3279,22 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .bricks-wrapper .entry__title a, 
 .bricks-wrapper .entry__title a:visited {
     color: black;
+    font-family: 'DM Serif Display'
 }
 
-.bricks-wrapper .entry__title a:hover, 
+
+.movie-description {
+    font-family: 'DM Serif Display';
+    font-size: 20px;
+    font-weight: 1;
+}
+
+
+h1.h-desc {
+    font-size: 40px;
+}
+
+.bricks-wrapper .entry__title a:hover,
 .bricks-wrapper .entry__title a:focus {
     color: rgba(0, 0, 0, 0.8);
 }
@@ -5262,7 +5275,7 @@ body.search-is-visible {
 
 
 .comment-container {
-    width: 70%;
+    width: 400px;
     border: none;
     background-color: lightgrey;
     border-radius: 10px;
@@ -5302,3 +5315,9 @@ input {
     height: 650px;
     overflow: hidden;
 }
+
+
+
+
+
+

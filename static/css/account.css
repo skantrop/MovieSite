@@ -169,7 +169,17 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 input.email, input.text.w3lpass {
   margin: 2em 0;
+  width: 450px;
 }
+
+
+.agileits-top {
+    padding: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .text:focus, .text:valid {
   box-shadow: none;
@@ -2767,3 +2777,5 @@ form#edit-movie-form{
     color: black;
     margin: 50px;
 }
+
+

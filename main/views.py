@@ -57,6 +57,7 @@ class MovieDetailView(DetailView):
         context = super().get_context_data()
         context['comments'] = Comment.objects.filter(movie=kwargs.get("object"))
         context['form'] = self.form
+        context['genres'] = Genre.objects.all()
         return context
 
     def post(self, request, *args, **kwargs):

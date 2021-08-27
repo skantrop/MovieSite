@@ -4,29 +4,36 @@
 <div class="vid-set">
     <div class="content-vid">
 
-        <iframe style="width: 80%; height: 600px; margin: 120px; margin-top: 200px; margin-bottom: 0px;"
+        <iframe style="width: 80%; height: 600px; margin: 70px; margin-top: 200px; margin-bottom: 0px;"
     src="{{ movie.video }}">
     </iframe>
     </div>
-    <h3 style="margin-left: 50px; margin-right: 50px;">{{ movie.title}}</h3>
-    <p style="margin-left: 50px; margin-right: 50px">{{ movie.description }}</p>
- </div>
+    <div class="movie-description">
+    <h1 class="h-desc" style="margin-left: 70px; margin-right: 70px; margin-top: 50px;">{{ movie.title}}</h1>
+    <p style="margin-left: 70px; margin-right: 70px;">{{ movie.description }}</p></div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="comment-section">
-    <h4>Comment section</h4>
+    <h1 class="h-desc" style="margin-left: 2px; margin-right: 70px; margin-top: 50px; font-family: 'DM Serif Display'">Comment section</h1>
+    <br>
     {% for comment in comments %}
 {% if comment.movie == movie %}
-<div class="comment-container">
+<div class="comment-container" style="margin-left: 5px; margin-right: 70px; margin-top: 50px;">
   <p class="user-data">{{ comment.user }} | {{ comment.date }}</p>
   <p class="comment-data">{{ comment.description }}</p>
 
 </div>
-    <br>
+
 
     {% endif  %}
 {% endfor %}
 </div>
-
+<br>
     <div class="comment-form">
         <form action="." method="post">
             {% csrf_token %}

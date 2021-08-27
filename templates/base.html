@@ -75,6 +75,9 @@
                     <li><a href="{% url 'login'%}" title="">Log In</a></li>
                     <li><a href="{% url 'registration' %}" title="">Register</a></li>
                     {% endif %}
+                    {% if user.is_staff %}
+                    <li><a href="{% url 'create' %}" title="">Add movie</a></li>
+                    {% endif %}
                 </ul> <!-- end s-header__nav -->
 
                 <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
@@ -116,7 +119,7 @@
     {% block content %}{% endblock content %}
     <!-- footer
     ================================================== -->
-    <footer class="s-footer">
+    <footer class="s-footer" style="margin-left: 100px;">
 
         <div class="s-footer__main">
 

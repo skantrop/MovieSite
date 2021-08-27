@@ -19,9 +19,8 @@ class CreateMovieForm(forms.ModelForm):
         data = self.cleaned_data
         data['author'] = self.request.user
         genre = data.pop('genre')
+        data['genre'] = genre
         movie = Movie.objects.create(**data)
-        movie.genre.add(*genre)
-        # send_new_addition_mail.delay(self.user.email, movie.title )
         return movie
 
 
